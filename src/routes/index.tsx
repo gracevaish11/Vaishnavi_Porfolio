@@ -283,60 +283,158 @@ function Portfolio() {
       {/* Scroll progress line */}
       <ScrollProgress />
 
-      {/* HERO */}
+      {/* HERO — Cybernetic neural terminal */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden"
+        className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden"
       >
-        <div className="absolute inset-0 grid-bg opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 grid md:grid-cols-[minmax(0,1fr)_auto] gap-12 items-center">
+        {/* Ambient background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[55%] bg-accent/15 blur-[110px] rounded-full animate-pulse" />
+          <div
+            className="absolute -bottom-[10%] -right-[10%] w-[60%] h-[55%] bg-[oklch(0.55_0.2_270)]/15 blur-[110px] rounded-full animate-pulse"
+            style={{ animationDelay: "2s" }}
+          />
+          <div className="absolute inset-0 grid-bg opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        </div>
+
+        <div className="relative mx-auto max-w-6xl w-full px-6 grid md:grid-cols-[minmax(0,1fr)_auto] gap-12 items-center">
+          {/* Left column */}
           <div>
+            {/* Terminal chrome */}
+            <div data-reveal className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-destructive/60" />
+                <span className="w-2 h-2 rounded-full bg-[oklch(0.75_0.15_85)]/70" />
+                <span className="w-2 h-2 rounded-full bg-accent/70" />
+                <span className="mono text-[10px] text-muted-foreground ml-3 tracking-wider">
+                  ~/vaishnavi — support.session
+                </span>
+              </div>
+              <div className="hidden sm:inline-flex items-center gap-2 mono text-[10px] px-2 py-1 rounded border border-accent/25 bg-accent/5 text-accent tracking-widest uppercase">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                System: Active
+              </div>
+            </div>
+
             <div
               data-reveal
+              data-reveal-delay="1"
               className="inline-flex items-center gap-2 mono text-xs px-3 py-1.5 rounded-full border border-border bg-surface text-muted-foreground mb-6"
             >
               <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
               Dublin, Ireland · Open to IT Support roles
             </div>
-            <h1 data-reveal data-reveal-delay="1" className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] mb-6">
+
+            <h1
+              data-reveal
+              data-reveal-delay="1"
+              className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.02] mb-6"
+            >
               Vaishnavi
               <br />
               <span className="text-gradient">Rajput.</span>
             </h1>
-            <p data-reveal data-reveal-delay="2" className="text-xl sm:text-2xl font-display text-muted-foreground mb-4">
+
+            <p
+              data-reveal
+              data-reveal-delay="2"
+              className="text-xl sm:text-2xl font-display text-foreground mb-4"
+            >
               IT Support Analyst
+              <span className="text-accent"> / </span>
+              <span className="text-muted-foreground">Data-driven</span>
             </p>
-            <p data-reveal data-reveal-delay="3" className="max-w-xl text-base text-muted-foreground mb-8 leading-relaxed">
-              A story that starts in Dublin — grounded in Windows and Linux
-              environments, built through SLA-driven, fast-paced support work,
-              and sharpened by an analytical mindset.
+
+            <p
+              data-reveal
+              data-reveal-delay="3"
+              className="max-w-xl text-base text-muted-foreground mb-8 leading-relaxed"
+            >
+              Dublin-based IT Support Analyst bringing{" "}
+              <span className="text-foreground font-medium">
+                data-analytics rigor
+              </span>{" "}
+              to SLA-driven support work — grounded in Windows and Linux, and
+              sharper for the SQL, Python, and structured validation habits
+              earned along the way.
             </p>
-            <div data-reveal data-reveal-delay="4" className="flex flex-wrap gap-3">
+
+            {/* Status chips */}
+            <div
+              data-reveal
+              data-reveal-delay="3"
+              className="flex flex-wrap gap-2 mb-8"
+            >
+              <StatusChip color="accent" label="SUPPORT.CORE" />
+              <StatusChip color="blue" label="DATA_ANALYTICS.mod" />
+              <StatusChip color="accent" label="SLA_100%" />
+            </div>
+
+            <div
+              data-reveal
+              data-reveal-delay="4"
+              className="flex flex-wrap gap-3"
+            >
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-accent text-accent-foreground font-medium hover:shadow-glow transition-all"
+                className="group inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-accent text-accent-foreground font-medium hover:shadow-glow transition-all"
               >
-                Get in touch <ArrowUpRight className="h-4 w-4" />
+                Initialize contact
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
                 href="#experience"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated transition-colors font-medium"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium"
               >
                 <Download className="h-4 w-4" /> View Resume
               </a>
             </div>
           </div>
 
-          <div data-reveal data-reveal-delay="2" className="relative mx-auto md:mx-0">
-            <div className="absolute -inset-6 rounded-full bg-accent/20 blur-3xl" />
-            <div className="relative h-56 w-56 sm:h-72 sm:w-72 rounded-full border border-border bg-surface grid place-items-center overflow-hidden">
+          {/* Right column — avatar with orbits */}
+          <div
+            data-reveal
+            data-reveal-delay="2"
+            className="relative mx-auto md:mx-0"
+          >
+            {/* Orbit rings */}
+            <div className="absolute -inset-8 rounded-full border border-accent/15 [animation:spin_18s_linear_infinite]" />
+            <div className="absolute -inset-4 rounded-full border-2 border-dashed border-accent/25 [animation:spin_28s_linear_infinite_reverse]" />
+            <div className="absolute -inset-12 rounded-full bg-accent/20 blur-3xl" />
+
+            {/* Corner brackets */}
+            <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-accent/60" />
+            <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-accent/60" />
+            <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-accent/60" />
+            <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-accent/60" />
+
+            <div className="relative h-60 w-60 sm:h-72 sm:w-72 rounded-full border-2 border-accent/50 bg-surface grid place-items-center overflow-hidden shadow-[0_0_60px_-10px_var(--accent-glow)]">
               <div className="absolute inset-0 grid-bg opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-accent/10" />
+
               <span className="relative font-display font-bold text-7xl sm:text-8xl text-gradient">
                 VR
               </span>
+
+              {/* Scanning beam */}
+              <div className="absolute left-0 right-0 h-[2px] bg-accent/60 shadow-[0_0_12px_var(--accent-glow)] [animation:scanbeam_3.2s_ease-in-out_infinite]" />
+
               <div className="absolute bottom-4 mono text-[10px] tracking-widest text-muted-foreground">
                 &gt; SUPPORT.READY
               </div>
+            </div>
+
+            {/* Floating labels */}
+            <div className="absolute -top-2 -right-6 hidden sm:flex items-center gap-1.5 mono text-[10px] px-2 py-1 rounded border border-accent/40 bg-background/80 backdrop-blur text-accent shadow-lg animate-[float_5s_ease-in-out_infinite]">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              ANALYTICS: ON
+            </div>
+            <div
+              className="absolute -bottom-2 -left-6 hidden sm:flex items-center gap-1.5 mono text-[10px] px-2 py-1 rounded border border-[oklch(0.65_0.18_255)]/40 bg-background/80 backdrop-blur text-[oklch(0.75_0.15_255)] shadow-lg animate-[float_6s_ease-in-out_infinite_reverse]"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.7_0.18_255)]" />
+              SUPPORT: ACTV
             </div>
           </div>
         </div>
@@ -352,17 +450,19 @@ function Portfolio() {
         <div className="grid md:grid-cols-3 gap-8">
           <div data-reveal className="md:col-span-2 space-y-5 text-lg leading-relaxed text-muted-foreground">
             <p>
-              I'm a{" "}
+              I'm an{" "}
               <span className="text-foreground font-medium">
-                Data Analytics postgraduate
+                IT Support Analyst
               </span>{" "}
-              — MSc, First Class Honours from Maynooth University — who found
-              her footing in IT support and application support roles across
-              fast-paced, SLA-driven environments.
+              who brings{" "}
+              <span className="text-foreground font-medium">
+                data-analytics skills
+              </span>{" "}
+              into every ticket — 26+ months across fast-paced, SLA-driven
+              environments, backed by an MSc in Data Science &amp; Analytics
+              (First Class Honours) from Maynooth University.
             </p>
             <p>
-              Over{" "}
-              <span className="text-foreground font-medium">26+ months</span>,
               I've diagnosed issues across Windows and Linux, triaged
               incidents through Jira and Redmine, and built the instinct for{" "}
               <span className="text-foreground font-medium">
@@ -371,8 +471,8 @@ function Portfolio() {
               that turns repeat problems into permanent fixes.
             </p>
             <p>
-              My analytical training — SQL, Python, structured data
-              validation — isn't a separate skill set. It's what makes my
+              My analytics toolkit — SQL, Python, structured data
+              validation — isn't a parallel career. It's what makes my
               support work sharper: more evidence-based, more thorough, less
               guesswork.
             </p>
@@ -627,6 +727,26 @@ function Portfolio() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function StatusChip({ color, label }: { color: "accent" | "blue"; label: string }) {
+  const isBlue = color === "blue";
+  return (
+    <span
+      className={`inline-flex items-center gap-2 mono text-[10px] px-2.5 py-1 rounded-md border ${
+        isBlue
+          ? "border-[oklch(0.65_0.18_255)]/30 bg-[oklch(0.65_0.18_255)]/10 text-[oklch(0.78_0.15_255)]"
+          : "border-accent/30 bg-accent/10 text-accent"
+      }`}
+    >
+      <span
+        className={`h-1.5 w-1.5 rounded-full ${
+          isBlue ? "bg-[oklch(0.7_0.18_255)]" : "bg-accent"
+        }`}
+      />
+      {label}
+    </span>
   );
 }
 
