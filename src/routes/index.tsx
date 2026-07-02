@@ -7,7 +7,6 @@ import {
   MapPin,
   Linkedin,
   Download,
-  Github,
   Terminal,
   Database,
   Wrench,
