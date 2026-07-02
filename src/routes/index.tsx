@@ -730,6 +730,26 @@ function Portfolio() {
   );
 }
 
+function StatusChip({ color, label }: { color: "accent" | "blue"; label: string }) {
+  const isBlue = color === "blue";
+  return (
+    <span
+      className={`inline-flex items-center gap-2 mono text-[10px] px-2.5 py-1 rounded-md border ${
+        isBlue
+          ? "border-[oklch(0.65_0.18_255)]/30 bg-[oklch(0.65_0.18_255)]/10 text-[oklch(0.78_0.15_255)]"
+          : "border-accent/30 bg-accent/10 text-accent"
+      }`}
+    >
+      <span
+        className={`h-1.5 w-1.5 rounded-full ${
+          isBlue ? "bg-[oklch(0.7_0.18_255)]" : "bg-accent"
+        }`}
+      />
+      {label}
+    </span>
+  );
+}
+
 function ScrollProgress() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
