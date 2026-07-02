@@ -450,17 +450,19 @@ function Portfolio() {
         <div className="grid md:grid-cols-3 gap-8">
           <div data-reveal className="md:col-span-2 space-y-5 text-lg leading-relaxed text-muted-foreground">
             <p>
-              I'm a{" "}
+              I'm an{" "}
               <span className="text-foreground font-medium">
-                Data Analytics postgraduate
+                IT Support Analyst
               </span>{" "}
-              — MSc, First Class Honours from Maynooth University — who found
-              her footing in IT support and application support roles across
-              fast-paced, SLA-driven environments.
+              who brings{" "}
+              <span className="text-foreground font-medium">
+                data-analytics skills
+              </span>{" "}
+              into every ticket — 26+ months across fast-paced, SLA-driven
+              environments, backed by an MSc in Data Science &amp; Analytics
+              (First Class Honours) from Maynooth University.
             </p>
             <p>
-              Over{" "}
-              <span className="text-foreground font-medium">26+ months</span>,
               I've diagnosed issues across Windows and Linux, triaged
               incidents through Jira and Redmine, and built the instinct for{" "}
               <span className="text-foreground font-medium">
@@ -469,8 +471,8 @@ function Portfolio() {
               that turns repeat problems into permanent fixes.
             </p>
             <p>
-              My analytical training — SQL, Python, structured data
-              validation — isn't a separate skill set. It's what makes my
+              My analytics toolkit — SQL, Python, structured data
+              validation — isn't a parallel career. It's what makes my
               support work sharper: more evidence-based, more thorough, less
               guesswork.
             </p>
