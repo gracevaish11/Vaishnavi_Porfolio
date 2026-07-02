@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
   Mail,
@@ -11,9 +11,13 @@ import {
   Database,
   Wrench,
   BarChart3,
+  Code2,
   GraduationCap,
   Briefcase,
   Send,
+  Award,
+  BookOpen,
+  Sparkles,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -26,7 +30,7 @@ const NAV = [
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
-  { id: "education", label: "Education" },
+  { id: "certifications", label: "Certifications" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -36,93 +40,138 @@ const EXPERIENCE = [
     company: "Outlier",
     location: "Freelance · Remote",
     period: "Dec 2025 — Present",
+    story:
+      "The current chapter — where volume meets precision.",
     points: [
-      "Review and validate AI-generated outputs against structured quality guidelines.",
-      "Perform data annotation to improve model accuracy and consistency.",
-      "Deliver high-quality work under tight turnaround windows.",
+      "Evaluate 100+ AI-generated outputs daily against structured quality rubrics, catching inconsistencies before they compound.",
+      "Turn recurring error patterns into structured feedback that measurably sharpens model output quality.",
+      "Hold accuracy at high volume, under pressure — the discipline that makes every review count.",
     ],
   },
   {
     role: "Technical Demonstrator",
-    company: "Maynooth University",
-    location: "Ireland",
+    company: "National University of Ireland Maynooth",
+    location: "Maynooth, Ireland",
     period: "Feb 2025 — Jun 2025",
+    story:
+      "Where teaching became its own form of support engineering.",
     points: [
-      "Provided technical support to 50+ users across Windows and Linux environments.",
-      "Resolved system and application issues within SLA windows.",
-      "Improved support efficiency through structured root cause analysis.",
+      "Supported 300+ students per session across Windows and Linux, applying root cause analysis to cut down repeat incidents.",
+      "Assessed 300+ assignments per semester as part of a 10-person team, keeping feedback consistent at scale.",
+      "Documented recurring failure patterns into a shared knowledge base — leaving the team stronger than I found it.",
     ],
   },
   {
-    role: "IT Application Support Analyst",
-    company: "Bombay Stock Exchange",
+    role: "Release & Application Support Analyst",
+    company: "Bombay Stock Exchange (BSE)",
     location: "Mumbai, India",
-    period: "Dec 2023 — Aug 2024",
+    period: "Jun 2022 — Aug 2024",
+    story:
+      "The proving ground — 26+ months of SLA-driven, client-facing support.",
     points: [
-      "Supported application deployments and data validation across environments.",
-      "Managed incidents end-to-end while maintaining strict SLA compliance.",
-      "Collaborated with dev and QA teams using SVN and internal ticketing tools.",
+      "Triaged 40+ monthly incidents through Jira and Redmine while holding 100% SLA compliance across all client-facing services.",
+      "Ran pre-release data validation across 3 deployment environments to catch defects before they shipped.",
+      "Produced operational reports that gave leadership clear visibility into system health and incident trends.",
+      "Handled data access requests for 200+ users with strict care for confidentiality and audit trails.",
+      "Recognised twice as Employee of the Month in 2023 — the payoff of consistency under pressure.",
     ],
   },
 ];
 
 const SKILLS = [
   {
-    label: "IT & Support",
+    label: "IT Support & Operations",
     icon: Wrench,
     items: [
+      "Incident Management & Triage",
+      "Root Cause Analysis",
       "Application Support",
-      "Incident Management",
-      "Troubleshooting",
-      "Windows & Linux",
-      "Technical Documentation",
+      "Technical Troubleshooting",
       "SLA Management",
+      "Release & Deployment Support",
+      "Data Validation & Integrity",
+      "Technical Documentation",
+      "User Access & Query Handling",
     ],
   },
   {
-    label: "Data & Analysis",
+    label: "Dev Tools & Platforms",
+    icon: Terminal,
+    items: ["Jira", "Redmine", "Git", "SVN", "GitHub", "Windows", "Linux", "Microsoft 365"],
+  },
+  {
+    label: "Data Analysis & Reporting",
     icon: BarChart3,
     items: [
-      "Data Validation",
+      "Python (pandas, NumPy, scikit-learn, matplotlib)",
       "SQL",
       "R",
-      "Excel",
-      "Bayesian Modelling",
-      "Data Imputation",
+      "Power BI",
+      "Excel (Pivot, VLOOKUP)",
+      "Statistical Modelling",
     ],
   },
   {
-    label: "Tools",
+    label: "Databases & Web",
     icon: Database,
-    items: ["SVN", "Power BI", "PostGIS"],
+    items: [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "RESTful APIs",
+    ],
   },
 ];
 
 const PROJECTS = [
   {
     title: "NYC Flights Data Analysis",
-    tag: "R · Data Analysis",
-    desc: "Analysed 336,000+ flight records in R to identify delay patterns and airline performance trends.",
+    tag: "Python · pandas · matplotlib",
+    desc: "Ingested and analysed 336,000+ flight records to surface delay patterns and benchmark carrier efficiency — turning raw operational data into a clear insights report.",
   },
   {
-    title: "Bayesian Modelling — MSc Thesis",
-    tag: "JAGS · Statistics",
-    desc: "Applied Bayesian SUR modelling with Horseshoe prior and missForest imputation across 46 environmental predictors for incomplete ecological plant trait datasets.",
+    title: "Bayesian Modelling of Ecological Data",
+    tag: "R · JAGS · MCMC",
+    desc: "Applied Bayesian regression and MCMC inference to a dataset riddled with missing values across 46 environmental predictors, using multiple imputation to still produce robust estimates.",
   },
   {
-    title: "Doctor Appointment Booking System",
-    tag: "Database · Full-stack",
-    desc: "Built a database-driven application for patient records and scheduling. Awarded 1st place in an inter-college competition.",
+    title: "Python Job Alert Bot",
+    tag: "Python · REST APIs · SQLite",
+    desc: "Built an end-to-end real-time data pipeline using the Reed and Adzuna APIs — automating ingestion, deduplication, and delivery.",
   },
   {
     title: "Spatial Data Analysis",
-    tag: "SQL · PostGIS",
-    desc: "Queried geospatial datasets to evaluate accessibility metrics and ensure data quality across regions.",
+    tag: "PostGIS · SQL",
+    desc: "Queried 10,000+ geospatial records to map accessibility gaps and support evidence-based decisions across regions.",
   },
   {
     title: "CollabSync",
-    tag: "MERN Stack",
-    desc: "Team task management application built with MongoDB, Express, React, and Node.js.",
+    tag: "MERN · Real-time",
+    desc: "Full-stack real-time collaboration platform on MongoDB, Express, React, and Node.js — authentication, live sync, full ownership start to finish.",
+  },
+  {
+    title: "Doctor Appointment Booking System",
+    tag: "Relational DB · Full-stack",
+    desc: "Designed a database-driven app for patient records and scheduling. Awarded 1st place in an inter-college competition.",
+  },
+];
+
+const CERTIFICATIONS = [
+  {
+    name: "Google IT Support Professional Certificate",
+    issuer: "Coursera",
+    status: "In Progress",
+  },
+  {
+    name: "Power BI Essential Training",
+    issuer: "LinkedIn Learning",
+    status: "Completed",
   },
 ];
 
@@ -136,7 +185,7 @@ const EDUCATION = [
   {
     degree: "BSc Information Technology",
     school: "University of Mumbai, India",
-    period: "",
+    period: "2019 — 2022",
     grade: "First Class Honours",
   },
 ];
@@ -152,13 +201,31 @@ function Portfolio() {
           if (e.isIntersecting) setActive(e.target.id);
         });
       },
-      { rootMargin: "-40% 0px -55% 0px" }
+      { rootMargin: "-40% 0px -55% 0px" },
     );
     NAV.forEach((n) => {
       const el = document.getElementById(n.id);
       if (el) io.observe(el);
     });
-    return () => io.disconnect();
+
+    // Reveal-on-scroll
+    const reveal = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            reveal.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.08 },
+    );
+    document.querySelectorAll("[data-reveal]").forEach((el) => reveal.observe(el));
+
+    return () => {
+      io.disconnect();
+      reveal.disconnect();
+    };
   }, []);
 
   const onSubmit = (e: FormEvent) => {
@@ -169,8 +236,17 @@ function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <style>{`
+        [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+        [data-reveal].is-visible{opacity:1;transform:translateY(0)}
+        [data-reveal-delay="1"]{transition-delay:.08s}
+        [data-reveal-delay="2"]{transition-delay:.16s}
+        [data-reveal-delay="3"]{transition-delay:.24s}
+        [data-reveal-delay="4"]{transition-delay:.32s}
+      `}</style>
+
       {/* NAV */}
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-6">
           <a href="#home" className="flex items-center gap-2 group">
             <span className="grid h-9 w-9 place-items-center rounded-lg bg-accent text-accent-foreground font-display font-bold shrink-0">
@@ -204,6 +280,9 @@ function Portfolio() {
         </div>
       </header>
 
+      {/* Scroll progress line */}
+      <ScrollProgress />
+
       {/* HERO */}
       <section
         id="home"
@@ -211,25 +290,28 @@ function Portfolio() {
       >
         <div className="absolute inset-0 grid-bg opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
         <div className="relative mx-auto max-w-6xl px-6 grid md:grid-cols-[minmax(0,1fr)_auto] gap-12 items-center">
-          <div className="animate-fade-up">
-            <div className="inline-flex items-center gap-2 mono text-xs px-3 py-1.5 rounded-full border border-border bg-surface text-muted-foreground mb-6">
+          <div>
+            <div
+              data-reveal
+              className="inline-flex items-center gap-2 mono text-xs px-3 py-1.5 rounded-full border border-border bg-surface text-muted-foreground mb-6"
+            >
               <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              Available in Dublin · Onsite / Hybrid
+              Dublin, Ireland · Open to IT Support roles
             </div>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] mb-6">
+            <h1 data-reveal data-reveal-delay="1" className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] mb-6">
               Vaishnavi
               <br />
               <span className="text-gradient">Rajput.</span>
             </h1>
-            <p className="text-xl sm:text-2xl font-display text-muted-foreground mb-4">
+            <p data-reveal data-reveal-delay="2" className="text-xl sm:text-2xl font-display text-muted-foreground mb-4">
               IT Support Analyst
             </p>
-            <p className="max-w-xl text-base text-muted-foreground mb-8 leading-relaxed">
-              Dublin-based support analyst pairing SLA-driven application
-              support experience with an analytical, data-first mindset.
-              Ready for onsite and hybrid IT support roles across Ireland.
+            <p data-reveal data-reveal-delay="3" className="max-w-xl text-base text-muted-foreground mb-8 leading-relaxed">
+              A story that starts in Dublin — grounded in Windows and Linux
+              environments, built through SLA-driven, fast-paced support work,
+              and sharpened by an analytical mindset.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div data-reveal data-reveal-delay="4" className="flex flex-wrap gap-3">
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-accent text-accent-foreground font-medium hover:shadow-glow transition-all"
@@ -245,7 +327,7 @@ function Portfolio() {
             </div>
           </div>
 
-          <div className="relative mx-auto md:mx-0">
+          <div data-reveal data-reveal-delay="2" className="relative mx-auto md:mx-0">
             <div className="absolute -inset-6 rounded-full bg-accent/20 blur-3xl" />
             <div className="relative h-56 w-56 sm:h-72 sm:w-72 rounded-full border border-border bg-surface grid place-items-center overflow-hidden">
               <div className="absolute inset-0 grid-bg opacity-60" />
@@ -258,80 +340,118 @@ function Portfolio() {
             </div>
           </div>
         </div>
+
+        {/* Scroll cue */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 mono text-[10px] tracking-widest text-muted-foreground animate-pulse">
+          scroll to begin the story ↓
+        </div>
       </section>
 
       {/* ABOUT */}
-      <Section id="about" kicker="01 / About" title="Analytical support, delivered.">
+      <Section id="about" kicker="Chapter 01 · About" title="Where the story begins.">
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2 space-y-5 text-lg leading-relaxed text-muted-foreground">
+          <div data-reveal className="md:col-span-2 space-y-5 text-lg leading-relaxed text-muted-foreground">
             <p>
               I'm a{" "}
               <span className="text-foreground font-medium">
                 Data Analytics postgraduate
               </span>{" "}
-              with hands-on IT application support experience — skilled in
-              troubleshooting, incident management, and system support across
-              Windows and Linux environments.
+              — MSc, First Class Honours from Maynooth University — who found
+              her footing in IT support and application support roles across
+              fast-paced, SLA-driven environments.
             </p>
             <p>
-              I combine strong analytical and data-driven problem-solving
-              skills from my{" "}
+              Over{" "}
+              <span className="text-foreground font-medium">26+ months</span>,
+              I've diagnosed issues across Windows and Linux, triaged
+              incidents through Jira and Redmine, and built the instinct for{" "}
               <span className="text-foreground font-medium">
-                MSc in Data Science &amp; Analytics
+                root cause analysis
               </span>{" "}
-              with practical, SLA-driven technical support — resolving user
-              issues quickly, maintaining clear technical documentation, and
-              improving support efficiency through root cause analysis.
+              that turns repeat problems into permanent fixes.
+            </p>
+            <p>
+              My analytical training — SQL, Python, structured data
+              validation — isn't a separate skill set. It's what makes my
+              support work sharper: more evidence-based, more thorough, less
+              guesswork.
             </p>
           </div>
-          <div className="rounded-xl border border-border bg-surface p-6 space-y-4">
-            <StatRow label="Base" value="Dublin, IE" />
-            <StatRow label="Focus" value="IT / Application Support" />
-            <StatRow label="Education" value="MSc Data Science" />
-            <StatRow label="Experience" value="Support · Analytics" />
+          <div data-reveal data-reveal-delay="2" className="rounded-xl border border-border bg-surface p-6 space-y-5">
+            <h4 className="mono text-xs uppercase tracking-widest text-accent">
+              Education
+            </h4>
+            {EDUCATION.map((e) => (
+              <div key={e.degree} className="pb-4 border-b border-border last:border-0 last:pb-0">
+                <div className="font-display font-semibold text-sm mb-1">
+                  {e.degree}
+                </div>
+                <div className="text-xs text-muted-foreground mb-2">
+                  {e.school}
+                </div>
+                <div className="flex flex-wrap gap-x-3 mono text-[11px]">
+                  <span className="text-accent">{e.period}</span>
+                  <span className="text-muted-foreground">{e.grade}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
 
       {/* EXPERIENCE */}
-      <Section id="experience" kicker="02 / Experience" title="Where I've worked.">
-        <div className="relative border-l border-border pl-6 md:pl-8 space-y-10">
-          {EXPERIENCE.map((x) => (
-            <div key={x.role + x.company} className="relative group">
-              <span className="absolute -left-[31px] md:-left-[39px] top-2 grid h-4 w-4 place-items-center">
-                <span className="h-3 w-3 rounded-full bg-accent ring-4 ring-background" />
-              </span>
-              <div className="rounded-xl border border-border bg-surface hover:bg-surface-elevated transition-colors p-6">
-                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-semibold">{x.role}</h3>
-                  <span className="mono text-xs text-accent">{x.period}</span>
+      <Section
+        id="experience"
+        kicker="Chapter 02 · Experience"
+        title="The journey, one milestone at a time."
+      >
+        <div className="relative">
+          {/* Glowing thread */}
+          <div className="absolute left-2 md:left-3 top-2 bottom-2 w-px bg-gradient-to-b from-accent/80 via-accent/30 to-transparent" />
+          <div className="space-y-10">
+            {EXPERIENCE.map((x, i) => (
+              <div key={x.role} data-reveal data-reveal-delay={String(Math.min(i + 1, 3))} className="relative pl-10 md:pl-14">
+                <span className="absolute left-0 md:left-1 top-3 grid h-5 w-5 place-items-center">
+                  <span className="absolute inset-0 rounded-full bg-accent/30 blur-md" />
+                  <span className="relative h-3 w-3 rounded-full bg-accent ring-4 ring-background" />
+                </span>
+                <div className="rounded-xl border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors p-6">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                    <h3 className="text-xl font-semibold">{x.role}</h3>
+                    <span className="mono text-xs text-accent">{x.period}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    <Briefcase className="inline h-3.5 w-3.5 mr-1.5 -mt-0.5" />
+                    {x.company} · {x.location}
+                  </p>
+                  <p className="text-sm italic text-foreground/80 mb-4 border-l-2 border-accent/50 pl-3">
+                    {x.story}
+                  </p>
+                  <ul className="space-y-2">
+                    {x.points.map((p) => (
+                      <li key={p} className="text-sm text-muted-foreground flex gap-3">
+                        <span className="text-accent mt-1.5">▹</span>
+                        <span>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4">
-                  <Briefcase className="inline h-3.5 w-3.5 mr-1.5 -mt-0.5" />
-                  {x.company} · {x.location}
-                </p>
-                <ul className="space-y-2">
-                  {x.points.map((p) => (
-                    <li key={p} className="text-sm text-muted-foreground flex gap-3">
-                      <span className="text-accent mt-1.5">▹</span>
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Section>
 
       {/* SKILLS */}
-      <Section id="skills" kicker="03 / Skills" title="Toolbox.">
-        <div className="grid md:grid-cols-3 gap-5">
-          {SKILLS.map((g) => {
+      <Section id="skills" kicker="Chapter 03 · Skills" title="The tools she reaches for.">
+        <div className="grid md:grid-cols-2 gap-5">
+          {SKILLS.map((g, i) => {
             const Icon = g.icon;
             return (
               <div
                 key={g.label}
+                data-reveal
+                data-reveal-delay={String((i % 3) + 1)}
                 className="rounded-xl border border-border bg-surface p-6 hover:border-accent/40 transition-colors"
               >
                 <div className="flex items-center gap-3 mb-5">
@@ -357,18 +477,20 @@ function Portfolio() {
       </Section>
 
       {/* PROJECTS */}
-      <Section id="projects" kicker="04 / Projects" title="Selected work.">
+      <Section id="projects" kicker="Chapter 04 · Projects" title="Moments where it all came together.">
         <div className="grid md:grid-cols-2 gap-5">
           {PROJECTS.map((p, i) => (
             <article
               key={p.title}
+              data-reveal
+              data-reveal-delay={String((i % 3) + 1)}
               className={`group relative rounded-xl border border-border bg-surface p-6 hover:bg-surface-elevated hover:border-accent/40 transition-all ${
                 i === 0 ? "md:col-span-2" : ""
               }`}
             >
               <div className="flex items-start justify-between gap-4 mb-3">
                 <span className="mono text-xs text-accent">{p.tag}</span>
-                <Terminal className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors" />
+                <Code2 className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors" />
               </div>
               <h3 className="text-xl font-display font-semibold mb-2">
                 {p.title}
@@ -381,47 +503,66 @@ function Portfolio() {
         </div>
       </Section>
 
-      {/* EDUCATION */}
-      <Section id="education" kicker="05 / Education" title="Academic path.">
+      {/* CERTIFICATIONS */}
+      <Section id="certifications" kicker="Chapter 05 · Certifications" title="Still learning, still building.">
         <div className="grid md:grid-cols-2 gap-5">
-          {EDUCATION.map((e) => (
+          {CERTIFICATIONS.map((c, i) => (
             <div
-              key={e.degree}
-              className="rounded-xl border border-border bg-surface p-6 flex gap-4"
+              key={c.name}
+              data-reveal
+              data-reveal-delay={String(i + 1)}
+              className="rounded-xl border border-border bg-surface p-6 flex gap-4 hover:border-accent/40 transition-colors"
             >
               <span className="grid h-11 w-11 place-items-center rounded-lg bg-accent/10 text-accent shrink-0">
-                <GraduationCap className="h-5 w-5" />
+                <Award className="h-5 w-5" />
               </span>
-              <div className="min-w-0">
-                <h3 className="font-display font-semibold mb-1">{e.degree}</h3>
-                <p className="text-sm text-muted-foreground">{e.school}</p>
-                <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2 mono text-xs">
-                  {e.period && <span className="text-accent">{e.period}</span>}
-                  <span className="text-muted-foreground">{e.grade}</span>
-                </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="font-display font-semibold mb-1">{c.name}</h3>
+                <p className="text-sm text-muted-foreground">{c.issuer}</p>
+                <span
+                  className={`inline-block mt-3 mono text-[10px] px-2 py-0.5 rounded-full border ${
+                    c.status === "In Progress"
+                      ? "border-accent/40 text-accent"
+                      : "border-border text-muted-foreground"
+                  }`}
+                >
+                  {c.status}
+                </span>
               </div>
+              <BookOpen className="h-4 w-4 text-muted-foreground shrink-0" />
             </div>
           ))}
         </div>
       </Section>
 
       {/* CONTACT */}
-      <Section id="contact" kicker="06 / Contact" title="Let's talk.">
+      <Section id="contact" kicker="Chapter 06 · Contact" title="The next chapter starts here.">
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-4">
+          <div data-reveal className="space-y-4">
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Open to IT Support Analyst and helpdesk roles across Dublin and
-              Ireland. The quickest way to reach me is email or LinkedIn.
+              If this story resonates — whether it's an IT Support Analyst
+              role, a helpdesk opening, or just a conversation — I'd love to
+              hear from you. Email and LinkedIn are the fastest routes.
             </p>
-            <ContactLine icon={Mail} label="Email" value="vaishnavi.rajput2002@gmail.com" href="mailto:vaishnavi.rajput2002@gmail.com" />
-            <ContactLine icon={Phone} label="Phone" value="+353 89 239 6308" href="tel:+353892396308" />
+            <ContactLine
+              icon={Mail}
+              label="Email"
+              value="vaishnavi.rajput2002@gmail.com"
+              href="mailto:vaishnavi.rajput2002@gmail.com"
+            />
+            <ContactLine
+              icon={Phone}
+              label="Phone"
+              value="+353 89 239 6308"
+              href="tel:+353892396308"
+            />
             <ContactLine
               icon={Linkedin}
               label="LinkedIn"
               value="vaishnavi-rajput-73948322a"
               href="https://linkedin.com/in/vaishnavi-rajput-73948322a"
             />
-            <ContactLine icon={MapPin} label="Location" value="Dublin, Ireland" />
+            <ContactLine icon={MapPin} label="Location" value="Dublin 24, Ireland" />
             <a
               href="#"
               className="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated transition-colors font-medium"
@@ -431,6 +572,8 @@ function Portfolio() {
           </div>
 
           <form
+            data-reveal
+            data-reveal-delay="2"
             onSubmit={onSubmit}
             className="rounded-xl border border-border bg-surface p-6 space-y-4"
           >
@@ -462,7 +605,15 @@ function Portfolio() {
               type="submit"
               className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-accent text-accent-foreground font-medium hover:shadow-glow transition-all"
             >
-              {sent ? "Message sent ✓" : (<><Send className="h-4 w-4" /> Send message</>)}
+              {sent ? (
+                <>
+                  <Sparkles className="h-4 w-4" /> Message sent
+                </>
+              ) : (
+                <>
+                  <Send className="h-4 w-4" /> Send message
+                </>
+              )}
             </button>
           </form>
         </div>
@@ -475,6 +626,25 @@ function Portfolio() {
           <span>&gt; system.status: ready_to_help</span>
         </div>
       </footer>
+    </div>
+  );
+}
+
+function ScrollProgress() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      if (ref.current) ref.current.style.width = `${pct}%`;
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div className="fixed top-[64px] left-0 right-0 z-40 h-px bg-transparent">
+      <div ref={ref} className="h-full bg-accent shadow-[0_0_10px_var(--accent-glow)] transition-[width] duration-100" />
     </div>
   );
 }
@@ -493,24 +663,15 @@ function Section({
   return (
     <section id={id} className="scroll-mt-24 py-24 px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12">
-          <div className="mono text-xs text-accent mb-3">{kicker}</div>
+        <div className="mb-12" data-reveal>
+          <div className="mono text-xs text-accent mb-3 uppercase tracking-widest">
+            {kicker}
+          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">{title}</h2>
         </div>
         {children}
       </div>
     </section>
-  );
-}
-
-function StatRow({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex items-center justify-between text-sm border-b border-border pb-3 last:border-0 last:pb-0">
-      <span className="mono text-xs text-muted-foreground uppercase tracking-wider">
-        {label}
-      </span>
-      <span className="font-medium">{value}</span>
-    </div>
   );
 }
 
@@ -542,7 +703,11 @@ function ContactLine({
     </div>
   );
   return href ? (
-    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+    <a
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel="noreferrer"
+    >
       {inner}
     </a>
   ) : (
