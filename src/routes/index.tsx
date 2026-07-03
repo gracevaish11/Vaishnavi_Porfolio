@@ -410,7 +410,6 @@ function Portfolio() {
             <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-accent/60" />
             <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-accent/60" />
 
-            <div className="relative h-60 w-60 sm:h-72 sm:w-72 rounded-full border-2 border-accent/50 bg-surface grid place-items-center overflow-hidden shadow-[0_0_60px_-10px_var(--accent-glow)]">
             <div className="relative h-60 w-60 sm:h-72 sm:w-72 rounded-full border-2 border-accent/50 bg-surface overflow-hidden shadow-[0_0_60px_-10px_var(--accent-glow)]">
               <img
                 src={vaishnaviPhoto.url}
