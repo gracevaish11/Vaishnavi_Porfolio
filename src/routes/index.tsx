@@ -871,25 +871,51 @@ function Section({
   id,
   kicker,
   title,
+  command,
   children,
 }: {
   id: string;
   kicker: string;
   title: string;
+  command?: string;
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 py-24 px-6">
-      <div className="mx-auto max-w-6xl">
+    <section id={id} className="scroll-mt-24 py-24 px-6 relative">
+      <div className="mx-auto max-w-6xl relative">
         <div className="mb-12" data-reveal>
-          <div className="mono text-xs text-accent mb-3 uppercase tracking-widest">
-            {kicker}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="h-px w-8 bg-accent" />
+            <div className="mono text-xs text-accent uppercase tracking-widest">
+              {kicker}
+            </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">{title}</h2>
+          {command && (
+            <div className="mono text-xs text-muted-foreground mb-4 flex items-center gap-2">
+              <span className="text-accent">$</span>
+              <span className="opacity-80">{command}</span>
+              <span className="inline-block w-1.5 h-3.5 bg-accent/70 animate-pulse -mb-0.5" />
+            </div>
+          )}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold max-w-3xl">
+            {title}
+          </h2>
         </div>
         {children}
       </div>
     </section>
+  );
+}
+
+function Metric({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="group relative rounded-lg border border-border bg-background/50 p-4 hover:border-accent/40 transition-colors overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="font-display text-2xl font-bold text-gradient">{value}</div>
+      <div className="mono text-[10px] uppercase tracking-widest text-muted-foreground mt-1">
+        {label}
+      </div>
+    </div>
   );
 }
 
