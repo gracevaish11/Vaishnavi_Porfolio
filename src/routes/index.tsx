@@ -39,41 +39,41 @@ const EXPERIENCE = [
     role: "AI Data Annotator",
     company: "Outlier",
     location: "Freelance · Remote",
-    period: "Dec 2025 — Present",
+    period: "Dec 2025 to Present",
     story:
-      "The current chapter — where volume meets precision.",
+      "The current chapter, where volume meets precision.",
     points: [
       "Evaluate 100+ AI-generated outputs daily against structured quality rubrics, catching inconsistencies before they compound.",
       "Turn recurring error patterns into structured feedback that measurably sharpens model output quality.",
-      "Hold accuracy at high volume, under pressure — the discipline that makes every review count.",
+      "Hold accuracy at high volume, under pressure, the discipline that makes every review count.",
     ],
   },
   {
     role: "Technical Demonstrator",
     company: "National University of Ireland Maynooth",
     location: "Maynooth, Ireland",
-    period: "Feb 2025 — Jun 2025",
+    period: "Feb 2025 to Jun 2025",
     story:
       "Where teaching became its own form of support engineering.",
     points: [
       "Supported 300+ students per session across Windows and Linux, applying root cause analysis to cut down repeat incidents.",
       "Assessed 300+ assignments per semester as part of a 10-person team, keeping feedback consistent at scale.",
-      "Documented recurring failure patterns into a shared knowledge base — leaving the team stronger than I found it.",
+      "Documented recurring failure patterns into a shared knowledge base, leaving the team stronger than I found it.",
     ],
   },
   {
     role: "Release & Application Support Analyst",
     company: "Bombay Stock Exchange (BSE)",
     location: "Mumbai, India",
-    period: "Jun 2022 — Aug 2024",
+    period: "Jun 2022 to Aug 2024",
     story:
-      "The proving ground — 26+ months of SLA-driven, client-facing support.",
+      "The proving ground, 26+ months of SLA driven, client facing support.",
     points: [
-      "Triaged 40+ monthly incidents through Jira and Redmine while holding 100% SLA compliance across all client-facing services.",
-      "Ran pre-release data validation across 3 deployment environments to catch defects before they shipped.",
+      "Triaged 40+ monthly incidents through Jira and Redmine while holding 100% SLA compliance across all client facing services.",
+      "Ran pre release data validation across 3 deployment environments to catch defects before they shipped.",
       "Produced operational reports that gave leadership clear visibility into system health and incident trends.",
       "Handled data access requests for 200+ users with strict care for confidentiality and audit trails.",
-      "Recognised twice as Employee of the Month in 2023 — the payoff of consistency under pressure.",
+      "Recognised twice as Employee of the Month in 2023, the payoff of consistency under pressure.",
     ],
   },
 ];
@@ -133,7 +133,7 @@ const PROJECTS = [
   {
     title: "NYC Flights Data Analysis",
     tag: "Python · pandas · matplotlib",
-    desc: "Ingested and analysed 336,000+ flight records to surface delay patterns and benchmark carrier efficiency — turning raw operational data into a clear insights report.",
+    desc: "Ingested and analysed 336,000+ flight records to surface delay patterns and benchmark carrier efficiency, turning raw operational data into a clear insights report.",
   },
   {
     title: "Bayesian Modelling of Ecological Data",
@@ -143,22 +143,22 @@ const PROJECTS = [
   {
     title: "Python Job Alert Bot",
     tag: "Python · REST APIs · SQLite",
-    desc: "Built an end-to-end real-time data pipeline using the Reed and Adzuna APIs — automating ingestion, deduplication, and delivery.",
+    desc: "Built an end to end real time data pipeline using the Reed and Adzuna APIs, automating ingestion, deduplication, and delivery.",
   },
   {
     title: "Spatial Data Analysis",
     tag: "PostGIS · SQL",
-    desc: "Queried 10,000+ geospatial records to map accessibility gaps and support evidence-based decisions across regions.",
+    desc: "Queried 10,000+ geospatial records to map accessibility gaps and support evidence based decisions across regions.",
   },
   {
     title: "CollabSync",
     tag: "MERN · Real-time",
-    desc: "Full-stack real-time collaboration platform on MongoDB, Express, React, and Node.js — authentication, live sync, full ownership start to finish.",
+    desc: "Full stack real time collaboration platform on MongoDB, Express, React, and Node.js, authentication, live sync, full ownership start to finish.",
   },
   {
     title: "Doctor Appointment Booking System",
-    tag: "Relational DB · Full-stack",
-    desc: "Designed a database-driven app for patient records and scheduling. Awarded 1st place in an inter-college competition.",
+    tag: "Relational DB · Full stack",
+    desc: "Designed a database driven app for patient records and scheduling. Awarded 1st place in an intercollege competition.",
   },
 ];
 
@@ -179,13 +179,13 @@ const EDUCATION = [
   {
     degree: "MSc Data Science & Analytics",
     school: "Maynooth University, Ireland",
-    period: "2024 — 2025",
+    period: "2024 to 2025",
     grade: "First Class Honours",
   },
   {
     degree: "BSc Information Technology",
     school: "University of Mumbai, India",
-    period: "2019 — 2022",
+    period: "2019 to 2022",
     grade: "First Class Honours",
   },
 ];
@@ -283,7 +283,7 @@ function Portfolio() {
       {/* Scroll progress line */}
       <ScrollProgress />
 
-      {/* HERO — Cybernetic neural terminal */}
+      {/* HERO, Cybernetic neural terminal */}
       <section
         id="home"
         className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden"
@@ -308,7 +308,7 @@ function Portfolio() {
                 <span className="w-2 h-2 rounded-full bg-[oklch(0.75_0.15_85)]/70" />
                 <span className="w-2 h-2 rounded-full bg-accent/70" />
                 <span className="mono text-[10px] text-muted-foreground ml-3 tracking-wider">
-                  ~/vaishnavi — support.session
+                  ~/vaishnavi, support.session
                 </span>
               </div>
               <div className="hidden sm:inline-flex items-center gap-2 mono text-[10px] px-2 py-1 rounded border border-accent/25 bg-accent/5 text-accent tracking-widest uppercase">
@@ -351,11 +351,11 @@ function Portfolio() {
               data-reveal-delay="3"
               className="max-w-xl text-base text-muted-foreground mb-8 leading-relaxed"
             >
-              Dublin-based IT Support Analyst bringing{" "}
+              Dublin based IT Support Analyst bringing{" "}
               <span className="text-foreground font-medium">
-                data-analytics rigor
+                data analytics rigor
               </span>{" "}
-              to SLA-driven support work — grounded in Windows and Linux, and
+              to SLA driven support work, grounded in Windows and Linux, and
               sharper for the SQL, Python, and structured validation habits
               earned along the way.
             </p>
@@ -392,7 +392,7 @@ function Portfolio() {
             </div>
           </div>
 
-          {/* Right column — avatar with orbits */}
+          {/* Right column, avatar with orbits */}
           <div
             data-reveal
             data-reveal-delay="2"
@@ -458,8 +458,8 @@ function Portfolio() {
               I'm an{" "}
               <span className="text-foreground font-medium">IT Support Analyst</span>{" "}
               who brings{" "}
-              <span className="text-foreground font-medium">data-analytics skills</span>{" "}
-              into every ticket — 26+ months across fast-paced, SLA-driven
+              <span className="text-foreground font-medium">data analytics skills</span>{" "}
+              into every ticket, 26+ months across fast paced, SLA driven
               environments, backed by an MSc in Data Science &amp; Analytics
               (First Class Honours) from Maynooth University.
             </p>
@@ -470,9 +470,9 @@ function Portfolio() {
               that turns repeat problems into permanent fixes.
             </p>
             <p>
-              My analytics toolkit — SQL, Python, structured data
-              validation — isn't a parallel career. It's what makes my
-              support work sharper: more evidence-based, more thorough, less
+              My analytics toolkit, SQL, Python, structured data
+              validation, isn't a parallel career. It's what makes my
+              support work sharper: more evidence based, more thorough, less
               guesswork.
             </p>
 
@@ -721,8 +721,8 @@ function Portfolio() {
         <div className="grid md:grid-cols-2 gap-8">
           <div data-reveal className="space-y-4">
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              If this story resonates — whether it's an IT Support Analyst
-              role, a helpdesk opening, or just a conversation — I'd love to
+              If this story resonates, whether it's an IT Support Analyst
+              role, a helpdesk opening, or just a conversation, I'd love to
               hear from you. Email and LinkedIn are the fastest routes.
             </p>
             <ContactLine
