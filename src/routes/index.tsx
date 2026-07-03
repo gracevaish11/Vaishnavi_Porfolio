@@ -446,18 +446,19 @@ function Portfolio() {
       </section>
 
       {/* ABOUT */}
-      <Section id="about" kicker="Chapter 01 · About" title="Where the story begins.">
+      <Section
+        id="about"
+        kicker="Chapter 01 · About"
+        command="cat ~/vaishnavi/about.md"
+        title="Where the story begins."
+      >
         <div className="grid md:grid-cols-3 gap-8">
           <div data-reveal className="md:col-span-2 space-y-5 text-lg leading-relaxed text-muted-foreground">
             <p>
               I'm an{" "}
-              <span className="text-foreground font-medium">
-                IT Support Analyst
-              </span>{" "}
+              <span className="text-foreground font-medium">IT Support Analyst</span>{" "}
               who brings{" "}
-              <span className="text-foreground font-medium">
-                data-analytics skills
-              </span>{" "}
+              <span className="text-foreground font-medium">data-analytics skills</span>{" "}
               into every ticket — 26+ months across fast-paced, SLA-driven
               environments, backed by an MSc in Data Science &amp; Analytics
               (First Class Honours) from Maynooth University.
@@ -465,9 +466,7 @@ function Portfolio() {
             <p>
               I've diagnosed issues across Windows and Linux, triaged
               incidents through Jira and Redmine, and built the instinct for{" "}
-              <span className="text-foreground font-medium">
-                root cause analysis
-              </span>{" "}
+              <span className="text-foreground font-medium">root cause analysis</span>{" "}
               that turns repeat problems into permanent fixes.
             </p>
             <p>
@@ -476,13 +475,35 @@ function Portfolio() {
               support work sharper: more evidence-based, more thorough, less
               guesswork.
             </p>
+
+            {/* Metrics grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+              <Metric value="100%" label="SLA compliance" />
+              <Metric value="26+" label="months in support" />
+              <Metric value="300+" label="students supported" />
+              <Metric value="40+" label="incidents / month" />
+            </div>
           </div>
-          <div data-reveal data-reveal-delay="2" className="rounded-xl border border-border bg-surface p-6 space-y-5">
-            <h4 className="mono text-xs uppercase tracking-widest text-accent">
-              Education
-            </h4>
+
+          {/* Education card */}
+          <div
+            data-reveal
+            data-reveal-delay="2"
+            className="relative rounded-xl border border-border bg-surface p-6 space-y-5 overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-40 h-40 bg-accent/10 blur-3xl rounded-full pointer-events-none" />
+            <div className="absolute -top-px left-6 right-6 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
+            <div className="flex items-center gap-2 relative">
+              <GraduationCap className="h-4 w-4 text-accent" />
+              <h4 className="mono text-xs uppercase tracking-widest text-accent">
+                education.log
+              </h4>
+            </div>
             {EDUCATION.map((e) => (
-              <div key={e.degree} className="pb-4 border-b border-border last:border-0 last:pb-0">
+              <div
+                key={e.degree}
+                className="pb-4 border-b border-border last:border-0 last:pb-0 relative"
+              >
                 <div className="font-display font-semibold text-sm mb-1">
                   {e.degree}
                 </div>
@@ -503,6 +524,7 @@ function Portfolio() {
       <Section
         id="experience"
         kicker="Chapter 02 · Experience"
+        command="git log --author=vaishnavi --oneline"
         title="The journey, one milestone at a time."
       >
         <div className="relative">
@@ -510,31 +532,46 @@ function Portfolio() {
           <div className="absolute left-2 md:left-3 top-2 bottom-2 w-px bg-gradient-to-b from-accent/80 via-accent/30 to-transparent" />
           <div className="space-y-10">
             {EXPERIENCE.map((x, i) => (
-              <div key={x.role} data-reveal data-reveal-delay={String(Math.min(i + 1, 3))} className="relative pl-10 md:pl-14">
+              <div
+                key={x.role}
+                data-reveal
+                data-reveal-delay={String(Math.min(i + 1, 3))}
+                className="relative pl-10 md:pl-14"
+              >
                 <span className="absolute left-0 md:left-1 top-3 grid h-5 w-5 place-items-center">
-                  <span className="absolute inset-0 rounded-full bg-accent/30 blur-md" />
+                  <span className="absolute inset-0 rounded-full bg-accent/30 blur-md animate-pulse" />
                   <span className="relative h-3 w-3 rounded-full bg-accent ring-4 ring-background" />
                 </span>
-                <div className="rounded-xl border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors p-6">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-                    <h3 className="text-xl font-semibold">{x.role}</h3>
-                    <span className="mono text-xs text-accent">{x.period}</span>
+                <div className="group relative rounded-xl border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-all p-6 overflow-hidden">
+                  {/* Corner brackets */}
+                  <div className="absolute top-2 right-2 w-3 h-3 border-t border-r border-accent/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute bottom-2 left-2 w-3 h-3 border-b border-l border-accent/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {/* Hover glow */}
+                  <div className="absolute -inset-px rounded-xl bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
+                  <div className="relative">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                      <h3 className="text-xl font-semibold">{x.role}</h3>
+                      <span className="mono text-xs text-accent px-2 py-0.5 rounded border border-accent/30 bg-accent/5">
+                        {x.period}
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      <Briefcase className="inline h-3.5 w-3.5 mr-1.5 -mt-0.5" />
+                      {x.company} · {x.location}
+                    </p>
+                    <p className="text-sm italic text-foreground/80 mb-4 border-l-2 border-accent/50 pl-3">
+                      {x.story}
+                    </p>
+                    <ul className="space-y-2">
+                      {x.points.map((p) => (
+                        <li key={p} className="text-sm text-muted-foreground flex gap-3">
+                          <span className="text-accent mt-1.5">▹</span>
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    <Briefcase className="inline h-3.5 w-3.5 mr-1.5 -mt-0.5" />
-                    {x.company} · {x.location}
-                  </p>
-                  <p className="text-sm italic text-foreground/80 mb-4 border-l-2 border-accent/50 pl-3">
-                    {x.story}
-                  </p>
-                  <ul className="space-y-2">
-                    {x.points.map((p) => (
-                      <li key={p} className="text-sm text-muted-foreground flex gap-3">
-                        <span className="text-accent mt-1.5">▹</span>
-                        <span>{p}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             ))}
@@ -543,7 +580,12 @@ function Portfolio() {
       </Section>
 
       {/* SKILLS */}
-      <Section id="skills" kicker="Chapter 03 · Skills" title="The tools she reaches for.">
+      <Section
+        id="skills"
+        kicker="Chapter 03 · Skills"
+        command="ls -la ~/vaishnavi/toolkit/"
+        title="The tools she reaches for."
+      >
         <div className="grid md:grid-cols-2 gap-5">
           {SKILLS.map((g, i) => {
             const Icon = g.icon;
@@ -552,19 +594,25 @@ function Portfolio() {
                 key={g.label}
                 data-reveal
                 data-reveal-delay={String((i % 3) + 1)}
-                className="rounded-xl border border-border bg-surface p-6 hover:border-accent/40 transition-colors"
+                className="group relative rounded-xl border border-border bg-surface p-6 hover:border-accent/40 transition-all overflow-hidden"
               >
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-accent/10 text-accent">
-                    <Icon className="h-5 w-5" />
+                <div className="absolute -top-16 -right-16 w-32 h-32 bg-accent/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-center justify-between mb-5 relative">
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-10 w-10 place-items-center rounded-lg bg-accent/10 text-accent border border-accent/20">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <h3 className="font-display font-semibold">{g.label}</h3>
+                  </div>
+                  <span className="mono text-[10px] text-muted-foreground">
+                    0{i + 1}/0{SKILLS.length}
                   </span>
-                  <h3 className="font-display font-semibold">{g.label}</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 relative">
                   {g.items.map((s) => (
                     <span
                       key={s}
-                      className="mono text-xs px-2.5 py-1 rounded-md bg-background border border-border text-muted-foreground"
+                      className="mono text-xs px-2.5 py-1 rounded-md bg-background border border-border text-muted-foreground hover:border-accent/40 hover:text-foreground transition-colors"
                     >
                       {s}
                     </span>
@@ -577,66 +625,99 @@ function Portfolio() {
       </Section>
 
       {/* PROJECTS */}
-      <Section id="projects" kicker="Chapter 04 · Projects" title="Moments where it all came together.">
+      <Section
+        id="projects"
+        kicker="Chapter 04 · Projects"
+        command="./run --project all"
+        title="Moments where it all came together."
+      >
         <div className="grid md:grid-cols-2 gap-5">
           {PROJECTS.map((p, i) => (
             <article
               key={p.title}
               data-reveal
               data-reveal-delay={String((i % 3) + 1)}
-              className={`group relative rounded-xl border border-border bg-surface p-6 hover:bg-surface-elevated hover:border-accent/40 transition-all ${
+              className={`group relative rounded-xl border border-border bg-surface overflow-hidden hover:bg-surface-elevated hover:border-accent/40 transition-all ${
                 i === 0 ? "md:col-span-2" : ""
               }`}
             >
-              <div className="flex items-start justify-between gap-4 mb-3">
-                <span className="mono text-xs text-accent">{p.tag}</span>
-                <Code2 className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors" />
+              {/* Terminal chrome */}
+              <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-background/50">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-destructive/50" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.75_0.15_85)]/60" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
+                </div>
+                <span className="mono text-[10px] text-muted-foreground">
+                  ~/project/{String(i + 1).padStart(2, "0")}
+                </span>
+                <Code2 className="h-3.5 w-3.5 text-muted-foreground group-hover:text-accent transition-colors" />
               </div>
-              <h3 className="text-xl font-display font-semibold mb-2">
-                {p.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {p.desc}
-              </p>
+              <div className="p-6 relative">
+                <div className="absolute -top-8 -right-8 w-32 h-32 bg-accent/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="mono text-xs text-accent">{p.tag}</span>
+                <h3 className="text-xl font-display font-semibold mt-2 mb-2 group-hover:text-accent transition-colors">
+                  {p.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {p.desc}
+                </p>
+              </div>
             </article>
           ))}
         </div>
       </Section>
 
       {/* CERTIFICATIONS */}
-      <Section id="certifications" kicker="Chapter 05 · Certifications" title="Still learning, still building.">
+      <Section
+        id="certifications"
+        kicker="Chapter 05 · Certifications"
+        command="cat ~/certs/*.badge"
+        title="Still learning, still building."
+      >
         <div className="grid md:grid-cols-2 gap-5">
           {CERTIFICATIONS.map((c, i) => (
             <div
               key={c.name}
               data-reveal
               data-reveal-delay={String(i + 1)}
-              className="rounded-xl border border-border bg-surface p-6 flex gap-4 hover:border-accent/40 transition-colors"
+              className="group relative rounded-xl border border-border bg-surface p-6 flex gap-4 hover:border-accent/40 transition-all overflow-hidden"
             >
-              <span className="grid h-11 w-11 place-items-center rounded-lg bg-accent/10 text-accent shrink-0">
+              <div className="absolute -inset-px rounded-xl bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              <span className="relative grid h-11 w-11 place-items-center rounded-lg bg-accent/10 text-accent border border-accent/20 shrink-0">
                 <Award className="h-5 w-5" />
               </span>
-              <div className="min-w-0 flex-1">
+              <div className="relative min-w-0 flex-1">
                 <h3 className="font-display font-semibold mb-1">{c.name}</h3>
                 <p className="text-sm text-muted-foreground">{c.issuer}</p>
                 <span
-                  className={`inline-block mt-3 mono text-[10px] px-2 py-0.5 rounded-full border ${
+                  className={`inline-flex items-center gap-1.5 mt-3 mono text-[10px] px-2 py-0.5 rounded-full border ${
                     c.status === "In Progress"
-                      ? "border-accent/40 text-accent"
+                      ? "border-accent/40 text-accent bg-accent/5"
                       : "border-border text-muted-foreground"
                   }`}
                 >
+                  <span
+                    className={`w-1 h-1 rounded-full ${
+                      c.status === "In Progress" ? "bg-accent animate-pulse" : "bg-muted-foreground"
+                    }`}
+                  />
                   {c.status}
                 </span>
               </div>
-              <BookOpen className="h-4 w-4 text-muted-foreground shrink-0" />
+              <BookOpen className="relative h-4 w-4 text-muted-foreground shrink-0" />
             </div>
           ))}
         </div>
       </Section>
 
       {/* CONTACT */}
-      <Section id="contact" kicker="Chapter 06 · Contact" title="The next chapter starts here.">
+      <Section
+        id="contact"
+        kicker="Chapter 06 · Contact"
+        command="ssh vaishnavi@dublin --connect"
+        title="The next chapter starts here."
+      >
         <div className="grid md:grid-cols-2 gap-8">
           <div data-reveal className="space-y-4">
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
@@ -665,7 +746,7 @@ function Portfolio() {
             <ContactLine icon={MapPin} label="Location" value="Dublin 24, Ireland" />
             <a
               href="#"
-              className="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated transition-colors font-medium"
+              className="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium"
             >
               <Download className="h-4 w-4" /> Download CV
             </a>
@@ -675,46 +756,63 @@ function Portfolio() {
             data-reveal
             data-reveal-delay="2"
             onSubmit={onSubmit}
-            className="rounded-xl border border-border bg-surface p-6 space-y-4"
+            className="relative rounded-xl border border-border bg-surface overflow-hidden"
           >
-            <Field label="Name">
-              <input
-                required
-                type="text"
-                placeholder="Your name"
-                className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
-              />
-            </Field>
-            <Field label="Email">
-              <input
-                required
-                type="email"
-                placeholder="you@company.com"
-                className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
-              />
-            </Field>
-            <Field label="Message">
-              <textarea
-                required
-                rows={5}
-                placeholder="Tell me about the role..."
-                className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors resize-none"
-              />
-            </Field>
-            <button
-              type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-accent text-accent-foreground font-medium hover:shadow-glow transition-all"
-            >
-              {sent ? (
-                <>
-                  <Sparkles className="h-4 w-4" /> Message sent
-                </>
-              ) : (
-                <>
-                  <Send className="h-4 w-4" /> Send message
-                </>
-              )}
-            </button>
+            {/* Terminal chrome */}
+            <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-background/50">
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-destructive/50" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.75_0.15_85)]/60" />
+                <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
+              </div>
+              <span className="mono text-[10px] text-muted-foreground tracking-widest">
+                message.compose
+              </span>
+              <span className="mono text-[10px] text-accent flex items-center gap-1">
+                <span className="w-1 h-1 rounded-full bg-accent animate-pulse" />
+                LIVE
+              </span>
+            </div>
+            <div className="p-6 space-y-4">
+              <Field label="> name">
+                <input
+                  required
+                  type="text"
+                  placeholder="Your name"
+                  className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
+                />
+              </Field>
+              <Field label="> email">
+                <input
+                  required
+                  type="email"
+                  placeholder="you@company.com"
+                  className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
+                />
+              </Field>
+              <Field label="> message">
+                <textarea
+                  required
+                  rows={5}
+                  placeholder="Tell me about the role..."
+                  className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors resize-none"
+                />
+              </Field>
+              <button
+                type="submit"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-accent text-accent-foreground font-medium hover:shadow-glow transition-all"
+              >
+                {sent ? (
+                  <>
+                    <Sparkles className="h-4 w-4" /> Message sent
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" /> Send message
+                  </>
+                )}
+              </button>
+            </div>
           </form>
         </div>
       </Section>
