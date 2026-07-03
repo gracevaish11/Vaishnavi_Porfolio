@@ -411,12 +411,14 @@ function Portfolio() {
             <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-accent/60" />
 
             <div className="relative h-60 w-60 sm:h-72 sm:w-72 rounded-full border-2 border-accent/50 bg-surface grid place-items-center overflow-hidden shadow-[0_0_60px_-10px_var(--accent-glow)]">
-              <div className="absolute inset-0 grid-bg opacity-60" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-accent/10" />
-
-              <span className="relative font-display font-bold text-7xl sm:text-8xl text-gradient">
-                VR
-              </span>
+            <div className="relative h-60 w-60 sm:h-72 sm:w-72 rounded-full border-2 border-accent/50 bg-surface overflow-hidden shadow-[0_0_60px_-10px_var(--accent-glow)]">
+              <img
+                src={vaishnaviPhoto.url}
+                alt="Vaishnavi Rajput"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-background/40 via-transparent to-accent/10 mix-blend-overlay" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-accent/20 rounded-full" />
 
               {/* Scanning beam */}
               <div className="absolute left-0 right-0 h-[2px] bg-accent/60 shadow-[0_0_12px_var(--accent-glow)] [animation:scanbeam_3.2s_ease-in-out_infinite]" />
