@@ -824,6 +824,9 @@ function Portfolio() {
                 <textarea
                   required
                   name="message"
+                />
+              </Field>
+              <input type="hidden" name="time" value={new Date().toLocaleString()} readOnly />
                   rows={5}
                   placeholder="Tell me about the role..."
                   className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors resize-none"
