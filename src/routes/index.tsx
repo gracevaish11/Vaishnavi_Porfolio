@@ -814,7 +814,7 @@ function Portfolio() {
               <Field label="> email">
                 <input
                   required
-                  name="reply_to"
+                  name="from_email"
                   type="email"
                   placeholder="you@company.com"
                   className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
