@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 import vaishnaviPhoto from "@/assets/vaishnavi.jpg.asset.json";
+
+const EMAILJS_SERVICE_ID = "service_npql5sd";
+const EMAILJS_TEMPLATE_ID = "template_g0y2vrg";
+const EMAILJS_PUBLIC_KEY = "8OpoEESa2q4TTpDgB";
 import {
   ArrowUpRight,
   Mail,
@@ -194,6 +199,9 @@ const EDUCATION = [
 function Portfolio() {
   const [active, setActive] = useState("home");
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -229,10 +237,27 @@ function Portfolio() {
     };
   }, []);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    if (!formRef.current) return;
+    setSending(true);
+    setErrorMsg(null);
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setSent(true);
+      formRef.current.reset();
+      setTimeout(() => setSent(false), 4000);
+    } catch (err) {
+      console.error("EmailJS send failed", err);
+      setErrorMsg("Could not send. Please email vaishnavi directly.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -755,6 +780,7 @@ function Portfolio() {
           </div>
 
           <form
+            ref={formRef}
             data-reveal
             data-reveal-delay="2"
             onSubmit={onSubmit}
@@ -779,6 +805,7 @@ function Portfolio() {
               <Field label="> name">
                 <input
                   required
+                  name="from_name"
                   type="text"
                   placeholder="Your name"
                   className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
@@ -787,6 +814,7 @@ function Portfolio() {
               <Field label="> email">
                 <input
                   required
+                  name="reply_to"
                   type="email"
                   placeholder="you@company.com"
                   className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
@@ -795,18 +823,27 @@ function Portfolio() {
               <Field label="> message">
                 <textarea
                   required
+                  name="message"
                   rows={5}
                   placeholder="Tell me about the role..."
                   className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors resize-none"
                 />
               </Field>
+              {errorMsg && (
+                <p className="mono text-xs text-destructive">{errorMsg}</p>
+              )}
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-accent text-accent-foreground font-medium hover:shadow-glow transition-all"
+                disabled={sending}
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-accent text-accent-foreground font-medium hover:shadow-glow transition-all disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {sent ? (
                   <>
                     <Sparkles className="h-4 w-4" /> Message sent
+                  </>
+                ) : sending ? (
+                  <>
+                    <Send className="h-4 w-4 animate-pulse" /> Sending...
                   </>
                 ) : (
                   <>
