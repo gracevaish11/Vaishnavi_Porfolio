@@ -805,7 +805,7 @@ function Portfolio() {
               <Field label="> name">
                 <input
                   required
-                  name="from_name"
+                  name="name"
                   type="text"
                   placeholder="Your name"
                   className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
@@ -814,7 +814,7 @@ function Portfolio() {
               <Field label="> email">
                 <input
                   required
-                  name="reply_to"
+                  name="from_email"
                   type="email"
                   placeholder="you@company.com"
                   className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
@@ -829,6 +829,7 @@ function Portfolio() {
                   className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors resize-none"
                 />
               </Field>
+              <input type="hidden" name="time" value={new Date().toLocaleString()} readOnly />
               {errorMsg && (
                 <p className="mono text-xs text-destructive">{errorMsg}</p>
               )}
