@@ -237,10 +237,27 @@ function Portfolio() {
     };
   }, []);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    if (!formRef.current) return;
+    setSending(true);
+    setErrorMsg(null);
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setSent(true);
+      formRef.current.reset();
+      setTimeout(() => setSent(false), 4000);
+    } catch (err) {
+      console.error("EmailJS send failed", err);
+      setErrorMsg("Could not send. Please email vaishnavi directly.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
