@@ -805,7 +805,7 @@ function Portfolio() {
               <Field label="> name">
                 <input
                   required
-                  name="from_name"
+                  name="name"
                   type="text"
                   placeholder="Your name"
                   className="w-full bg-background border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors"
