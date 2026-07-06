@@ -199,6 +199,9 @@ const EDUCATION = [
 function Portfolio() {
   const [active, setActive] = useState("home");
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     const io = new IntersectionObserver(
