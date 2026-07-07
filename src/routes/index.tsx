@@ -411,7 +411,8 @@ function Portfolio() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
-                href="#experience"
+                href={resumePdf.url}
+                download={resumePdf.original_filename}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium"
               >
                 <Download className="h-4 w-4" /> View Resume
