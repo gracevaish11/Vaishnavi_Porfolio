@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import vaishnaviPhoto from "@/assets/vaishnavi.jpg.asset.json";
+import resumePdf from "@/assets/Vaishnavi_Rajput_resume.pdf.asset.json";
 
 const EMAILJS_SERVICE_ID = "service_npql5sd";
 const EMAILJS_TEMPLATE_ID = "template_g0y2vrg";
@@ -410,7 +411,8 @@ function Portfolio() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
-                href="#experience"
+                href={resumePdf.url}
+                download={resumePdf.original_filename}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium"
               >
                 <Download className="h-4 w-4" /> View Resume
@@ -772,7 +774,8 @@ function Portfolio() {
             />
             <ContactLine icon={MapPin} label="Location" value="Dublin 24, Ireland" />
             <a
-              href="#"
+              href={resumePdf.url}
+              download={resumePdf.original_filename}
               className="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium"
             >
               <Download className="h-4 w-4" /> Download CV
