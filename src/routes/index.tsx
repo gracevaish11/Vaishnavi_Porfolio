@@ -41,6 +41,25 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
+async function downloadResume() {
+  try {
+    const response = await fetch(resumePdf.url);
+    if (!response.ok) throw new Error("Failed to fetch resume");
+    const blob = await response.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = blobUrl;
+    link.download = resumePdf.original_filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(blobUrl);
+  } catch (error) {
+    console.error("Resume download failed:", error);
+    window.open(resumePdf.url, "_blank");
+  }
+}
+
 const EXPERIENCE = [
   {
     role: "AI Data Annotator",
@@ -412,8 +431,11 @@ function Portfolio() {
               </a>
               <a
                 href={resumePdf.url}
-                download={resumePdf.original_filename}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium"
+                onClick={(e) => {
+                  e.preventDefault();
+                  downloadResume();
+                }}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium cursor-pointer"
               >
                 <Download className="h-4 w-4" /> View Resume
               </a>
@@ -773,13 +795,16 @@ function Portfolio() {
               href="https://linkedin.com/in/vaishnavi-rajput-73948322a"
             />
             <ContactLine icon={MapPin} label="Location" value="Dublin 24, Ireland" />
-            <a
-              href={resumePdf.url}
-              download={resumePdf.original_filename}
-              className="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium"
-            >
-              <Download className="h-4 w-4" /> Download CV
-            </a>
+              <a
+                href={resumePdf.url}
+                onClick={(e) => {
+                  e.preventDefault();
+                  downloadResume();
+                }}
+                className="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium cursor-pointer"
+              >
+                <Download className="h-4 w-4" /> Download CV
+              </a>
           </div>
 
           <form
