@@ -84,14 +84,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Portfolio of Vaishnavi Rajput, a Dublin-based IT Support Analyst combining SLA-driven application support with an MSc in Data Science & Analytics.",
       },
       { name: "author", content: "Vaishnavi Rajput" },
-      { property: "og:title", content: "Vaishnavi Rajput — IT Support Analyst" },
+      { property: "og:title", content: "Vaishnavi Rajput — IT Support Analyst | Dublin" },
       {
         property: "og:description",
         content:
-          "Dublin-based IT Support Analyst with hands-on application support experience and an MSc in Data Science & Analytics.",
+          "Portfolio of Vaishnavi Rajput, a Dublin-based IT Support Analyst combining SLA-driven application support with an MSc in Data Science & Analytics.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Vaishnavi Rajput — IT Support Analyst | Dublin" },
+      { name: "twitter:description", content: "Portfolio of Vaishnavi Rajput, a Dublin-based IT Support Analyst combining SLA-driven application support with an MSc in Data Science & Analytics." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a876e153-f351-4af4-9ee7-1b4e3746ea4a/id-preview-5265a478--14869651-7e81-4634-8248-30be31c7949b.lovable.app-1783455534597.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a876e153-f351-4af4-9ee7-1b4e3746ea4a/id-preview-5265a478--14869651-7e81-4634-8248-30be31c7949b.lovable.app-1783455534597.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
