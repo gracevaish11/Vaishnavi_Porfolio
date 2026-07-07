@@ -431,8 +431,11 @@ function Portfolio() {
               </a>
               <a
                 href={resumePdf.url}
-                download={resumePdf.original_filename}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium"
+                onClick={(e) => {
+                  e.preventDefault();
+                  downloadResume();
+                }}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium cursor-pointer"
               >
                 <Download className="h-4 w-4" /> View Resume
               </a>
