@@ -774,7 +774,8 @@ function Portfolio() {
             />
             <ContactLine icon={MapPin} label="Location" value="Dublin 24, Ireland" />
             <a
-              href="#"
+              href={resumePdf.url}
+              download={resumePdf.original_filename}
               className="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border bg-surface hover:bg-surface-elevated hover:border-accent/40 transition-colors font-medium"
             >
               <Download className="h-4 w-4" /> Download CV
