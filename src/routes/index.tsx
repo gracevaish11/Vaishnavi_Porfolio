@@ -41,6 +41,25 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
+async function downloadResume() {
+  try {
+    const response = await fetch(resumePdf.url);
+    if (!response.ok) throw new Error("Failed to fetch resume");
+    const blob = await response.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = blobUrl;
+    link.download = resumePdf.original_filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(blobUrl);
+  } catch (error) {
+    console.error("Resume download failed:", error);
+    window.open(resumePdf.url, "_blank");
+  }
+}
+
 const EXPERIENCE = [
   {
     role: "AI Data Annotator",
