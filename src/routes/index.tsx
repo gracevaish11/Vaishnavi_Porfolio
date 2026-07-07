@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import vaishnaviPhoto from "@/assets/vaishnavi.jpg.asset.json";
+import resumePdf from "@/assets/Vaishnavi_Rajput_resume.pdf.asset.json";
 
 const EMAILJS_SERVICE_ID = "service_npql5sd";
 const EMAILJS_TEMPLATE_ID = "template_g0y2vrg";
