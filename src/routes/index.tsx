@@ -2,7 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import vaishnaviPhoto from "@/assets/vaishnavi.jpg.asset.json";
-import resumePdf from "@/assets/Vaishnavi_Rajput_resume.pdf.asset.json";
+
+const RESUME_URL = "/Vaishnavi_Rajput_resume.pdf";
+const RESUME_FILENAME = "Vaishnavi_Rajput_resume.pdf";
+const resumePdf = { url: RESUME_URL, original_filename: RESUME_FILENAME };
 
 const EMAILJS_SERVICE_ID = "service_npql5sd";
 const EMAILJS_TEMPLATE_ID = "template_g0y2vrg";
